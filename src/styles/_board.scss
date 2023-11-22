@@ -1,0 +1,25 @@
+.board-area {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.board-easy {
+  width: 25rem;
+  height: 25rem;
+}
+
+.board-medium {
+  width: 25rem;
+  height: 25rem;
+}
+
+.board-easy,
+.board-medium,
+.board-pro {
+  background-color: aliceblue;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
+  gap: 1rem;
+}
