@@ -8,22 +8,77 @@
 }
 
 .board-easy {
-  width: 25rem;
-  height: 25rem;
+  width: 21rem;
+  height: 14rem;
 }
 
 .board-medium {
-  width: 25rem;
-  height: 25rem;
+  width: 28rem;
+  height: 21rem;
+}
+
+.board-hard {
+  width: 35rem;
+  height: 28rem;
+}
+
+.board-pro {
+  width: 42rem;
+  height: 35rem;
 }
 
 .board-easy,
 .board-medium,
+.board-hard,
 .board-pro {
-  background-color: aliceblue;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
-  gap: 1rem;
+}
+
+.modal {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.modal .backdrop {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(2.5px);
+  z-index: 10;
+}
+.modal .modal__box {
+  width: 30rem;
+  height: 15rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 20;
+  padding: 1rem;
+  border: 2px solid white;
+  transform: translate(-50%, -100%);
+  font-family: "poppins", sans-serif;
+  color: white;
+}
+.modal .modal__box .modal__title {
+  text-align: center;
+  text-transform: uppercase;
+}
+.modal .modal__box .modal__description {
+  text-indent: 2rem;
+}
+.modal .modal__box .modal__submit {
+  width: 6rem;
+  height: 2rem;
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  background-color: inherit;
+  border: 2px solid white;
+  font-family: inherit;
+  color: inherit;
+  font-weight: 700;
 }
 
 .main-menu {
@@ -44,7 +99,6 @@
   font-weight: 800;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  transition: all 2s;
 }
 
 .menu__sub-button {
@@ -81,7 +135,7 @@
   background-image: url("/src/assets/tile-2.svg");
   transform: rotateY(180deg);
 }
-.tile__container .tile:hover {
+.tile__container .tile {
   transform: rotateY(180deg);
 }
 
@@ -92,10 +146,10 @@
 
 body {
   background: linear-gradient(to right, #38ef7d, #11998e);
-  margin: 1rem;
 }
 body main {
   display: flex;
+  backdrop-filter: blur(10px);
 }
 
 img {

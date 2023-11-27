@@ -7,21 +7,21 @@
     <link rel="stylesheet" href="src/styles/main.css" />
   </head>
   <body>
+    <div class="modal">
+      <div class="backdrop"></div>
+      <div class="modal__box">
+        <h2 class="modal__title">You won</h2>
+        <p class="modal__description">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde odio
+          delectus quisquam! Deserunt adipisci, incidunt minus harum illum
+          doloribus repudiandae veniam recusandae delectus cum eius, quibusdam
+          quod suscipit sit eligendi.
+        </p>
+        <button class="modal__submit">OK</button>
+      </div>
+    </div>
     <main>
-      <section class="board-area">
-        <div class="board-easy hidden"></div>
-        <div class="board-medium hidden"></div>
-        <div class="board-hard hidden"></div>
-        <div class="board-pro hidden"></div>
-        <div class="board-custom hidden"></div>
-
-        <!-- <div class="tile__container">
-          <div class="tile">
-            <div class="tile--front"></div>
-            <div class="tile--back"></div>
-          </div>
-        </div> -->
-      </section>
+      <section class="board-area"></section>
       <section class="main-menu">
         <button class="menu__button new-game">New Game</button>
         <button class="menu__button menu__sub-button easy hidden">Easy</button>
@@ -41,6 +41,20 @@
         <button class="menu__button buy-coffe">BuyCoffeto</button>
       </section>
     </main>
+
     <script src="src/js/main.js"></script>
   </body>
 </html>
+
+<!-- <div class="board-easy hidden"></div>
+  <div class="board-medium hidden"></div>
+  <div class="board-hard hidden"></div>
+  <div class="board-pro hidden"></div>
+  <div class="board-custom hidden"></div> -->
+
+<!-- <div class="tile__container">
+    <div class="tile">
+      <div class="tile--front"></div>
+      <div class="tile--back"></div>
+    </div>
+  </div> -->

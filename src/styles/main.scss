@@ -1,5 +1,6 @@
 @import "root";
 @import "board";
+@import "modal";
 @import "mainMenu";
 @import "buttons";
 @import "tile";
@@ -11,10 +12,11 @@
 
 body {
   background: $gradient;
-  margin: 1rem;
 
   main {
     display: flex;
+    // filter: blur(1px);
+    backdrop-filter: blur(10px);
   }
 }
 

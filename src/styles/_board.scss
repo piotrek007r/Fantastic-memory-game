@@ -6,20 +6,31 @@
   align-items: center;
 }
 .board-easy {
-  width: 25rem;
-  height: 25rem;
+  width: 21rem;
+  height: 14rem;
 }
 
 .board-medium {
-  width: 25rem;
-  height: 25rem;
+  width: 28rem;
+  height: 21rem;
+}
+
+.board-hard {
+  width: 35rem;
+  height: 28rem;
+}
+
+.board-pro {
+  width: 42rem;
+  height: 35rem;
 }
 
 .board-easy,
 .board-medium,
+.board-hard,
 .board-pro {
-  background-color: aliceblue;
+  // background-color: aliceblue;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
-  gap: 1rem;
+  // gap: 1rem;
 }
