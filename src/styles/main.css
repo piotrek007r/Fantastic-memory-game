@@ -8,13 +8,13 @@
 }
 
 .board-easy {
-  width: 21rem;
-  height: 14rem;
+  width: 28rem;
+  height: 21rem;
 }
 
 .board-medium {
   width: 28rem;
-  height: 21rem;
+  height: 28rem;
 }
 
 .board-hard {
@@ -23,8 +23,8 @@
 }
 
 .board-pro {
-  width: 42rem;
-  height: 35rem;
+  width: 56rem;
+  height: 42rem;
 }
 
 .board-easy,
@@ -60,6 +60,8 @@
   transform: translate(-50%, -100%);
   font-family: "poppins", sans-serif;
   color: white;
+  background-color: hsla(175, 80%, 10%, 0.5);
+  backdrop-filter: blur(4.5px);
 }
 .modal .modal__box .modal__title {
   text-align: center;

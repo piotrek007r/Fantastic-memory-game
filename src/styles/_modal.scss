@@ -24,6 +24,8 @@
     transform: translate(-50%, -100%);
     font-family: "poppins", sans-serif;
     color: $color-font-1;
+    background-color: $color-backgroun-modal;
+    backdrop-filter: blur(4.5px);
 
     .modal__title {
       text-align: center;

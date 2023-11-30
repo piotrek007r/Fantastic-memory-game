@@ -5,23 +5,44 @@ let newBoard;
 
 const difficulties = {
   easy: {
-    name: "easy",
-    tilesNum: 6,
-    gameTime: 120,
-    pairs: 3,
+    title: "easy",
+    tilesNum: 12,
+    gameTime: 60,
+    pairs: 6,
     differentTiles: 3,
+  },
+  medium: {
+    title: "medium",
+    tilesNum: 16,
+    gameTime: 160,
+    pairs: 8,
+    differentTiles: 8,
+  },
+  hard: {
+    title: "hard",
+    tilesNum: 20,
+    gameTime: 70,
+    pairs: 10,
+    differentTiles: 10,
+  },
+  pro: {
+    title: "pro",
+    tilesNum: 48,
+    gameTime: 180,
+    pairs: 24,
+    differentTiles: 24,
   },
 };
 
 // start a game
-function createBoard(tilesNum, difficulty) {
+function createBoard(difficulty) {
   newBoard && newBoard.remove();
   // creatng desired board
   newBoard = document.createElement("div");
   mainBoard.appendChild(newBoard);
-  newBoard.classList.add(`board-${difficulty}`);
+  newBoard.classList.add(`board-${difficulty.title}`);
   // filling board with tiles
-  for (let i = 0; i < tilesNum; i++) {
+  for (let i = 0; i < difficulty.tilesNum; i++) {
     const randomNum = Math.floor(Math.random() * 20 + 1);
     console.log(randomNum);
     const tile = `
@@ -40,8 +61,8 @@ function createBoard(tilesNum, difficulty) {
 // new game
 export function newGame(clikedBtn) {
   // difficulty choice buttons
-  if (clikedBtn.contains("easy")) createBoard(6, "easy");
-  if (clikedBtn.contains("medium")) createBoard(12, "medium");
-  if (clikedBtn.contains("hard")) createBoard(20, "hard");
-  if (clikedBtn.contains("pro")) createBoard(30, "pro");
+  clikedBtn.contains("easy") && createBoard(difficulties.easy);
+  clikedBtn.contains("medium") && createBoard(difficulties.medium);
+  clikedBtn.contains("hard") && createBoard(difficulties.hard);
+  clikedBtn.contains("pro") && createBoard(difficulties.pro);
 }
