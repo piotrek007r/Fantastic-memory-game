@@ -2,6 +2,7 @@
 
 import { newGame } from "./newGameView.js";
 import { subMenu } from "./subMenuView.js";
+import { highScoreModal } from "./modalsView.js";
 
 const menuContainer = document.querySelector(".main-menu");
 const menuBtn = document.querySelectorAll(".menu__button");
@@ -14,5 +15,5 @@ menuContainer.addEventListener("click", (e) => {
 
   clikedBtn.contains("menu__sub-button") && newGame(clikedBtn);
 
-  clikedBtn.contains("high-score") && modalView()
+  clikedBtn.contains("high-score") && highScoreModal()
 });

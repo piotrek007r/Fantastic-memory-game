@@ -48,35 +48,82 @@
   backdrop-filter: blur(2.5px);
   z-index: 10;
 }
-.modal .modal__box {
-  width: 30rem;
-  height: 15rem;
+.modal .modal__box--start-game {
+  width: 28rem;
+  height: 12rem;
   position: absolute;
   top: 50%;
   left: 50%;
   z-index: 20;
   padding: 1rem;
   border: 2px solid white;
-  transform: translate(-50%, -100%);
+  transform: translate(-50%, -75%);
   font-family: "poppins", sans-serif;
   color: white;
   background-color: hsla(175, 80%, 10%, 0.5);
   backdrop-filter: blur(4.5px);
 }
-.modal .modal__box .modal__title {
+.modal .modal__box--start-game .modal__title {
   text-align: center;
+}
+.modal .modal__box--start-game .modal__title span {
   text-transform: uppercase;
 }
-.modal .modal__box .modal__description {
+.modal .modal__box--start-game .modal__description {
+  text-align: center;
   text-indent: 2rem;
 }
-.modal .modal__box .modal__submit {
+.modal .modal__box--start-game .modal__high-score {
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+}
+.modal .modal__box--high-score {
+  width: 28rem;
+  height: 32rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 20;
+  padding: 1rem;
+  border: 2px solid white;
+  transform: translate(-50%, -50%);
+  font-family: "poppins", sans-serif;
+  color: white;
+  background-color: hsla(175, 80%, 10%, 0.5);
+  backdrop-filter: blur(4.5px);
+}
+.modal .modal__box--high-score .modal__title--high-score {
+  text-transform: uppercase;
+  text-align: center;
+}
+.modal .modal__box--high-score .modal__score--difficulties {
+  display: flex;
+  margin: 1rem 0 1rem 0;
+}
+.modal .modal__box--high-score .socre-board__table {
+  margin: auto;
+}
+.modal .modal__box--high-score .socre-board__table .score-board__name-field {
+  width: 15rem;
+}
+.modal .modal__box--high-score .socre-board__table tr td:first-child {
+  text-align: center;
+}
+.modal .modal__box--high-score .socre-board__table tr td:nth-child(2n) {
+  padding-left: 2rem;
+}
+.modal .modal__box--high-score .socre-board__table td {
+  padding-bottom: 0.2rem;
+}
+.modal .modal__submit {
   width: 6rem;
   height: 2rem;
   position: absolute;
-  right: 1rem;
+  right: 50%;
   bottom: 1rem;
-  background-color: inherit;
+  transform: translateX(50%);
+  background-color: initial;
   border: 2px solid white;
   font-family: inherit;
   color: inherit;
