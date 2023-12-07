@@ -7,40 +7,29 @@
     <link rel="stylesheet" href="src/styles/main.css" />
   </head>
   <body>
-    <div class="modal hidden">
-      <div class="backdrop"></div>
-      <div class="modal__box--high-score">
-        <h2 class="modal__title--high-score">High Scores</h2>
-        <div class="modal__score--difficulties">
-          <button class="menu__button menu__sub-button easy">Easy</button>
-          <button class="menu__button menu__sub-button medium">Medium</button>
-          <button class="menu__button menu__sub-button hard">Hard</button>
-          <button class="menu__button menu__sub-button pro">Like a Pro</button>
-        </div>
-        <table class="socre-board__table">
-          <thead>
-            <tr>
-              <th class="score-board__rank-field">Rank</th>
-              <th class="score-board__name-field">Name</th>
-              <th class="score-board__score-field">Score</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-
-        <button class="modal__submit">OK</button>
-      </div>
-    </div>
     <main>
       <section class="board-area"></section>
       <section class="main-menu">
         <button class="menu__button new-game">New Game</button>
-        <button class="menu__button menu__sub-button easy hidden">Easy</button>
-        <button class="menu__button menu__sub-button medium hidden">
+        <button
+          class="menu__button menu__sub-button easy hidden"
+          data-tab="easy"
+        >
+          Easy
+        </button>
+        <button
+          class="menu__button menu__sub-button medium hidden"
+          data-tab="medium"
+        >
           Medium
         </button>
-        <button class="menu__button menu__sub-button hard hidden">Hard</button>
-        <button class="menu__button menu__sub-button pro hidden">
+        <button
+          class="menu__button menu__sub-button hard hidden"
+          data-tab="hard"
+        >
+          Hard
+        </button>
+        <button class="menu__button menu__sub-button pro hidden" data-tab="pro">
           Like a Pro
         </button>
         <button class="menu__button menu__sub-button custom hidden">
@@ -52,74 +41,13 @@
         <button class="menu__button buy-coffe">BuyCoffeto</button>
       </section>
     </main>
-
     <script type="module" src="src/js/main.js"></script>
   </body>
+  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis molestias
+  quasi impedit ullam. Quod maiores repellendus fugit. Earum minima numquam
+  dolores nemo excepturi laborum debitis. Non, aperiam! Et, provident
+  architecto. Soluta hic similique veniam rerum adipisci necessitatibus
+  voluptatum dolor ducimus illo. Nesciunt magnam maxime voluptatem ipsam,
+  numquam molestiae quod eos quos eligendi suscipit? Voluptatibus ducimus saepe
+  facere nesciunt dolore cum.
 </html>
-
-<!-- <div class="board-easy hidden"></div>
-  <div class="board-medium hidden"></div>
-  <div class="board-hard hidden"></div>
-  <div class="board-pro hidden"></div>
-  <div class="board-custom hidden"></div> -->
-
-<!-- <div class="tile__container">
-    <div class="tile">
-      <div class="tile--front"></div>
-      <div class="tile--back"></div>
-    </div>
-  </div> -->
-
-<!-- <tr>
-  <td>2</td>
-  <td>...</td>
-  <td>...</td>
-</tr>
-<tr>
-  <td>3</td>
-  <td>...</td>
-  <td>...</td>
-</tr>
-<tr>
-  <td>4</td>
-  <td>...</td>
-  <td>...</td>
-</tr>
-<tr>
-  <td>5</td>
-  <td>...</td>
-  <td>...</td>
-</tr>
-<tr>
-  <td>6</td>
-  <td>...</td>
-  <td>...</td>
-</tr>
-<tr>
-  <td>7</td>
-  <td>...</td>
-  <td>...</td>
-</tr>
-<tr>
-  <td>8</td>
-  <td>...</td>
-  <td>...</td>
-</tr>
-<tr>
-  <td>9</td>
-  <td>...</td>
-  <td>...</td>
-</tr>
-<tr>
-  <td>10</td>
-  <td>...</td>
-  <td>...</td>
-</tr> -->
-<!-- 
-<ul class="socre-board">
-  <li class="score-board__head">
-    <h4 class="score-board__rank-field">Rank</h4>
-    <h4 class="score-board__name-field">Name</h4>
-    <h4 class="score-board__score-field">Score</h4>
-  </li>
-</ul> -->

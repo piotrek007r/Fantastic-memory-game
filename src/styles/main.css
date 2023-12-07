@@ -48,20 +48,24 @@
   backdrop-filter: blur(2.5px);
   z-index: 10;
 }
-.modal .modal__box--start-game {
-  width: 28rem;
-  height: 12rem;
+.modal .modal__box--start-game,
+.modal .modal__box--high-score,
+.modal .modal__box--how-to-play {
   position: absolute;
   top: 50%;
   left: 50%;
   z-index: 20;
   padding: 1rem;
   border: 2px solid white;
-  transform: translate(-50%, -75%);
   font-family: "poppins", sans-serif;
   color: white;
   background-color: hsla(175, 80%, 10%, 0.5);
   backdrop-filter: blur(4.5px);
+}
+.modal .modal__box--start-game {
+  width: 28rem;
+  height: 12rem;
+  transform: translate(-50%, -75%);
 }
 .modal .modal__box--start-game .modal__title {
   text-align: center;
@@ -81,17 +85,7 @@
 .modal .modal__box--high-score {
   width: 28rem;
   height: 32rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 20;
-  padding: 1rem;
-  border: 2px solid white;
   transform: translate(-50%, -50%);
-  font-family: "poppins", sans-serif;
-  color: white;
-  background-color: hsla(175, 80%, 10%, 0.5);
-  backdrop-filter: blur(4.5px);
 }
 .modal .modal__box--high-score .modal__title--high-score {
   text-transform: uppercase;
@@ -116,7 +110,51 @@
 .modal .modal__box--high-score .socre-board__table td {
   padding-bottom: 0.2rem;
 }
-.modal .modal__submit {
+.modal .modal__box--how-to-play {
+  width: 28rem;
+  height: 25rem;
+  transform: translate(-50%, -50%);
+}
+.modal .modal__box--how-to-play .modal__title--how-to-play {
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.main-menu {
+  width: 19rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.menu__button,
+.high-score__difficulty--button {
+  width: 80%;
+  height: 2rem;
+  background: none;
+  border: 2px solid white;
+  color: white;
+  font-family: "poppins", sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  line-height: 2.2;
+}
+
+.menu__sub-button,
+.high-score__difficulty--button {
+  transform: scale(0.8);
+}
+
+.highlighted {
+  color: #42dacd;
+  border-color: #42dacd;
+  transform: scale(0.9);
+}
+
+.modal__submit {
   width: 6rem;
   height: 2rem;
   position: absolute;
@@ -128,30 +166,6 @@
   font-family: inherit;
   color: inherit;
   font-weight: 700;
-}
-
-.main-menu {
-  width: 19rem;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.menu__button {
-  width: 80%;
-  height: 2rem;
-  background: none;
-  border: 2px solid white;
-  color: white;
-  font-family: "poppins", sans-serif;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-}
-
-.menu__sub-button {
-  transform: scale(0.8);
 }
 
 .tile__container {

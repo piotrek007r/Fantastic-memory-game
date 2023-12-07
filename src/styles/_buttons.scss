@@ -1,4 +1,5 @@
-.menu__button {
+.menu__button,
+.high-score__difficulty--button {
   width: 80%;
   height: 2rem;
   background: none;
@@ -8,8 +9,30 @@
   font-weight: 800;
   letter-spacing: 0.5px;
   text-transform: uppercase;
+  line-height: 2.2;
 }
 
-.menu__sub-button {
+.menu__sub-button,
+.high-score__difficulty--button {
   transform: scale(0.8);
+}
+
+.highlighted {
+  color: $button-highlight;
+  border-color: $button-highlight;
+  transform: scale(0.9);
+}
+
+.modal__submit {
+  width: 6rem;
+  height: 2rem;
+  position: absolute;
+  right: 50%;
+  bottom: 1rem;
+  transform: translateX(50%);
+  background-color: initial;
+  border: 2px solid $color-font-1;
+  font-family: inherit;
+  color: inherit;
+  font-weight: 700;
 }

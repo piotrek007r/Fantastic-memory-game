@@ -1,4 +1,32 @@
+import { scoreLists } from "./model.js";
+
 const body = document.querySelector("main");
+let activeModal = "";
+
+// ----------< HELPER FUNCTIONS >---------------
+
+function clickHandler(e) {
+  console.log(e);
+  const targetBtn = e.target.getAttribute("data-tab");
+  console.log(targetBtn);
+  if (targetBtn === "close-modal") {
+    closeModal();
+  } else if (targetBtn) {
+    const sortedList = scoreLists[targetBtn].sort(
+      (a, b) => b.points - a.points
+    );
+    closeModal();
+    highScoreModal(sortedList, targetBtn);
+  } else return;
+}
+
+function closeModal() {
+  console.log("close");
+  activeModal.remove();
+  activeModal = "";
+}
+
+// ----------< START GAME MODAL >---------------
 
 export function startGameModal(difficulty) {
   const modalStart = `
@@ -15,22 +43,18 @@ export function startGameModal(difficulty) {
           } different types of tiles. 
         </p>
         <h3 class="modal__high-score" >Top Score: <span>${"80"}</span></h3>
-        <button class="modal__submit">OK</button>
+        <button class="modal__submit" data-tab="close-modal">OK</button>
         </div>
         </div>
         `;
   body.insertAdjacentHTML("afterbegin", modalStart);
+
+  activeModal = document.querySelector(".modal");
+
+  activeModal.addEventListener("click", clickHandler);
 }
 
-const scoreList = [
-  { name: "Player 1", points: 85 },
-  { name: "Player 2", points: 72 },
-  { name: "Player 3", points: 90 },
-  { name: "Player 4", points: 60 },
-  { name: "Player 5", points: 78 },
-  { name: "Player 6", points: 92 },
-  { name: "Player 7", points: 67 },
-];
+// ----------< HIGH-SCORES MODAL >---------------
 
 function generateScoreList(scores) {
   let result = "";
@@ -50,48 +74,59 @@ function generateScoreList(scores) {
   return result;
 }
 
-function generateScoreTable(scoreList) {
-  return `<table class="socre-board__table">
-  <thead>
-    <tr>
-      <th class="score-board__rank-field">Rank</th>
-      <th class="score-board__name-field">Name</th>
-      <th class="score-board__score-field">Score</th>
-    </tr>
-  </thead>
-  <tbody>      
-  ${generateScoreList(scoreList)}      
-  </tbody>
-</table>`;
-}
-
-export function highScoreModal() {
+export function highScoreModal(
+  scoreList = scoreLists.easy,
+  handleBtn = "easy"
+) {
   const modalHighScore = `
-  <div class="modal">
-      <div class="backdrop"></div>
-      <div class="modal__box--high-score">
+    <div class="modal">
+    <div class="backdrop"></div>
+    <div class="modal__box--high-score">
         <h2 class="modal__title--high-score">High Scores</h2>
         <div class="modal__score--difficulties">
-          <button class="menu__button menu__sub-button easy">Easy</button>
-          <button class="menu__button menu__sub-button medium">Medium</button>
-          <button class="menu__button menu__sub-button hard">Hard</button>
-          <button class="menu__button menu__sub-button pro">Like a Pro</button>
+        <button class="high-score__difficulty--button easy" data-tab="easy">Easy</button>
+        <button class="high-score__difficulty--button medium" data-tab="medium">Medium</button>
+        <button class="high-score__difficulty--button hard" data-tab="hard">Hard</button>
+        <button class="high-score__difficulty--button pro" data-tab="pro">Like a Pro</button>
         </div>
-        ${generateScoreTable(scoreList)}
-        <button class="modal__submit">OK</button>
-      </div>
-    </div>`;
+        <table class="socre-board__table">
+        <thead>
+        <tr>
+        <th class="score-board__rank-field">Rank</th>
+        <th class="score-board__name-field">Name</th>
+        <th class="score-board__score-field">Score</th>
+        </tr>
+        </thead>
+        <tbody>      
+        ${generateScoreList(scoreList)}      
+        </tbody>
+        </table>
+        <button class="modal__submit" data-tab="close-modal">OK</button>
+        </div>
+        </div>`;
   body.insertAdjacentHTML("afterbegin", modalHighScore);
 
-  const scoreModalBtn = document.querySelector(".modal__score--difficulties");
+  activeModal = document.querySelector(".modal");
+  const activeBtn = activeModal.querySelector(`.${handleBtn}`);
+  activeBtn.classList.add("highlighted");
 
-  
-  scoreModalBtn.addEventListener("click", (e) => {
-    const clikedBtn = e.target.classList;
-    console.log(e);
-    clikedBtn.contains("easy") && console.log("1");
-    clikedBtn.contains("medium") && createBoard(difficulties.medium);
-    clikedBtn.contains("hard") && createBoard(difficulties.hard);
-    clikedBtn.contains("pro") && createBoard(difficulties.pro);
-  });
+  activeModal.addEventListener("click", clickHandler);
+}
+
+//----------< HOW TO PLAY MODAL >---------------
+
+export function howToPlay() {
+  const modalHowToPlay = `
+  <div class="modal">
+  <div class="backdrop"></div>
+  <div class="modal__box--how-to-play">
+    <h2 class="modal__title--how-to-play">Rules</h2>
+    <p class="modal__description--how-to-play">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis molestias quasi impedit ullam. Quod maiores repellendus fugit. Earum minima numquam dolores nemo excepturi laborum debitis. Non, aperiam! Et, provident architecto.
+    Soluta hic similique veniam rerum adipisci necessitatibus voluptatum dolor ducimus illo. Nesciunt magnam maxime voluptatem ipsam, numquam molestiae quod eos quos eligendi suscipit? Voluptatibus ducimus saepe facere nesciunt dolore cum.</p>
+    <button class="modal__submit" data-tab="close-modal">OK</button>
+  </div>
+  </div>`;
+  body.insertAdjacentHTML("afterbegin", modalHowToPlay);
+  activeModal = document.querySelector(".modal");
+  activeModal.addEventListener("click", clickHandler);
 }
