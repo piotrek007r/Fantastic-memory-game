@@ -1,20 +1,21 @@
 "use strict";
 import * as model from "./model.js";
 import { createBoard } from "./newGameView.js";
+import { tileShow } from "./newGameView.js";
 import { subMenu } from "./subMenuView.js";
 import { highScoreModal } from "./modalsView.js";
 import { howToPlay } from "./modalsView.js";
 
 const menuContainer = document.querySelector(".main-menu");
+const boardContainer = document.querySelector(".board-area");
 const menuBtn = document.querySelectorAll(".menu__button");
 
 export function controlNewGame(dataSet) {
   const difficulty = model.difficulties[dataSet.getAttribute("data-tab")];
-  model.drawTiles(difficulty);
-  createBoard(difficulty);
+  createBoard(model.drawTiles(difficulty), difficulty);
 }
 
-// main menu
+// Main menu
 menuContainer.addEventListener("click", (e) => {
   const clikedBtn = e.target.classList;
 
@@ -24,5 +25,11 @@ menuContainer.addEventListener("click", (e) => {
 
   clikedBtn.contains("high-score") && highScoreModal();
 
-  clikedBtn.contains(".how-to-play") && howToPlay();
+  clikedBtn.contains("how-to-play") && howToPlay();
+});
+
+// Game play
+boardContainer.addEventListener("click", (e) => {
+  // show a tile and record its ID
+  model.updateDisplayedTiles(tileShow(e));
 });

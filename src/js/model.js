@@ -68,11 +68,29 @@ export const difficulties = {
   },
 };
 
-export function drawTiles({ tilesNum, pairs, differentTiles }) {
-  const drawnTiles = [];
-  for (let i = 0; i < differentTiles; i++) {
-    const randomNum = Math.floor(Math.random() * 20 + 1);
-    drawnTiles.push(randomNum);
+export const displayedTiles = [];
+
+export function updateDisplayedTiles(tileId) {
+  const foundTile = displayedTiles.find((rec) => rec.id === tileId);
+  !foundTile
+    ? displayedTiles.push({
+        id: tileId,
+        timesShown: 1,
+      })
+    : foundTile.timesShown++;
+
+//   console.log(displayedTiles);
+//   //   console.log(foundTile);
+}
+export function drawTiles({ pairs, differentTiles }) {
+  const randomPairs = [];
+  while (randomPairs.length < differentTiles) {
+    const randomNum = Math.floor(Math.random() * 24 + 1);
+    if (!randomPairs.includes(randomNum)) randomPairs.push(randomNum);
   }
-  console.log(drawnTiles);
+  const pairsRelation = (pairs / differentTiles) * 2;
+  const tiles = randomPairs
+    .flatMap((tile) => Array.from({ length: pairsRelation }, () => tile))
+    .sort((a, b) => Math.random() - 0.5);
+  return tiles;
 }

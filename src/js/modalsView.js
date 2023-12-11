@@ -6,9 +6,7 @@ let activeModal = "";
 // ----------< HELPER FUNCTIONS >---------------
 
 function clickHandler(e) {
-  console.log(e);
   const targetBtn = e.target.getAttribute("data-tab");
-  console.log(targetBtn);
   if (targetBtn === "close-modal") {
     closeModal();
   } else if (targetBtn) {
@@ -21,7 +19,6 @@ function clickHandler(e) {
 }
 
 function closeModal() {
-  console.log("close");
   activeModal.remove();
   activeModal = "";
 }
