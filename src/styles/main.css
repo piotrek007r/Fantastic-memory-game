@@ -5,6 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .board-easy {
@@ -187,7 +188,7 @@
 }
 .tile__container .tile {
   transform-style: preserve-3d;
-  transition: all 1s;
+  transition: all 0.8s;
 }
 .tile__container .tile .tile--front {
   backface-visibility: hidden;
@@ -197,9 +198,49 @@
   backface-visibility: hidden;
   background-image: url("/src/assets/tile-2.svg");
   transform: rotateY(180deg);
+  opacity: 1;
+  filter: grayscale(0);
 }
 .tile__container .turned {
   transform: rotateY(180deg);
+}
+.tile__container .matched .tile--back {
+  opacity: 0.3;
+  filter: grayscale(0.5);
+  transition: all 1s;
+}
+
+.game-bar__display {
+  display: flex;
+  flex-direction: row;
+}
+
+.display {
+  width: 12rem;
+  height: 3.5rem;
+  background: none;
+  color: rgba(255, 255, 255, 0.76);
+  font-family: "poppins", sans-serif;
+  letter-spacing: 0.5px;
+  text-align: center;
+  transform: translateY(-3rem);
+}
+.display h4 {
+  font-weight: 700;
+}
+.display p {
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 20px;
+}
+
+.display:nth-child(2n) {
+  border-left: 2px solid rgba(255, 255, 255, 0.76);
+  border-right: 2px solid rgba(255, 255, 255, 0.76);
+}
+
+.display--pro {
+  transform: translateY(3rem);
 }
 
 * {

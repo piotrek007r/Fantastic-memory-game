@@ -18,7 +18,7 @@
 
   .tile {
     transform-style: preserve-3d;
-    transition: all 1s;
+    transition: all 0.8s;
 
     .tile--front {
       backface-visibility: hidden;
@@ -28,10 +28,17 @@
       backface-visibility: hidden;
       background-image: url("/src/assets/tile-2.svg");
       transform: rotateY(180deg);
+      opacity: 1;
+      filter: grayscale(0);
     }
   }
 
   .turned {
     transform: rotateY(180deg);
+  }
+  .matched .tile--back {
+    opacity: 0.3;
+    filter: grayscale(0.5);
+    transition: all 1s;
   }
 }

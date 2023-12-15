@@ -1,7 +1,7 @@
 "use strict";
 import * as model from "./model.js";
 import { createBoard } from "./newGameView.js";
-import { tileShow } from "./newGameView.js";
+import { tileShow } from "./tileFlipViev.js";
 import { subMenu } from "./subMenuView.js";
 import { highScoreModal } from "./modalsView.js";
 import { howToPlay } from "./modalsView.js";
@@ -32,4 +32,5 @@ menuContainer.addEventListener("click", (e) => {
 boardContainer.addEventListener("click", (e) => {
   // show a tile and record its ID
   model.updateDisplayedTiles(tileShow(e));
+  
 });

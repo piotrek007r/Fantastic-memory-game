@@ -1,13 +1,14 @@
 import { startGameModal } from "./modalsView.js";
-import { displayedTiles } from "./model.js";
 
 const mainBoard = document.querySelector(".board-area");
 let newBoard;
-let reversedTiles = [];
+let gameBarNode;
 
 // start a game
 export function createBoard(boardTiles, currentLevel) {
   newBoard && newBoard.remove();
+  gameBarNode && gameBarNode.remove();
+
   // creatng desired board
   newBoard = document.createElement("div");
   mainBoard.appendChild(newBoard);
@@ -16,57 +17,35 @@ export function createBoard(boardTiles, currentLevel) {
   boardTiles.forEach((el) => {
     const tile = `
         <div class="tile__container">
-        <div class="tile" >
-        <div class="tile--front" data-tab=${el}></div>
-        <div class="tile--back" style="background-image: url('/src/assets/tile-${el}.svg')"></div>
-        </div>
+          <div class="tile" >
+            <div class="tile--front" data-tab=${el}></div>
+            <div class="tile--back" style="background-image: url('/src/assets/tile-${el}.svg')"></div>
+          </div>
         </div>`;
     newBoard.insertAdjacentHTML("afterbegin", tile);
   });
+  // creating game bar with scores and time left
+  const gameBar = `
+  <div class="game-bar__display">
+    <div class="display display__timer">
+    <h4>Time left:</h4>
+    <p>0</p>
+    </div>
+    <div class="display display__difficutly">
+    <h4>Difficulty:</h4>
+    <p>${currentLevel.title}</p>
+    </div>
+    <div class="display display__points">
+    <h4>Points:</h4>
+    <p>0</p>
+    </div>
+  </div>
+  `;
 
+  newBoard.insertAdjacentHTML("beforebegin", gameBar);
+  gameBarNode = document.querySelector(".game-bar__display");
+  currentLevel.title === "pro"
+    ? gameBarNode.classList.add("display--pro")
+    : gameBarNode.classList.remove("display--pro");
   // startGameModal(currentLevel);
-}
-
-// Game Play
-export function tileShow(clickedEl) {
-  console.log("hhm");
-  const clickedTile = clickedEl.target;
-  const tileReverse = clickedTile.closest(".tile");
-  const tileData = clickedTile.getAttribute("data-tab");
-  console.log(clickedTile);
-
-  if (
-    tileReverse.classList.contains("matched") ||
-    clickedTile.classList.contains("tile--back")
-  )
-    return;
-  if (reversedTiles.length < 2) {
-    tileReverse.classList.add("turned");
-    reversedTiles.push({ clickedTile: clickedTile, id: tileData });
-    console.log(reversedTiles);
-    if (
-      reversedTiles.length === 2 &&
-      reversedTiles[0].id === reversedTiles[1].id
-    ) {
-      console.log("ok");
-      reversedTiles.forEach((tile) =>
-        tile.clickedTile.closest(".tile").classList.add("matched")
-      );
-      displayedTiles.timesShown = 0;
-      reversedTiles = [];
-      return;
-    }
-    if (reversedTiles.length === 2)
-      setTimeout(() => {
-        hideTiles();
-      }, 1000);
-  } else return;
-  return tileData;
-}
-
-function hideTiles() {
-  reversedTiles.forEach((tile) =>
-    tile.clickedTile.closest(".tile").classList.remove("turned")
-  );
-  reversedTiles = [];
 }

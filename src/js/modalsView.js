@@ -1,4 +1,4 @@
-import { scoreLists } from "./model.js";
+import { scoreLists } from "./SCORE_LIST.js";
 
 const body = document.querySelector("main");
 let activeModal = "";

@@ -1,42 +1,3 @@
-export const scoreLists = {
-  easy: [
-    { name: "Alice", points: 85 },
-    { name: "Bob", points: 72 },
-    { name: "Charlie", points: 90 },
-    { name: "David", points: 60 },
-    { name: "Eva", points: 78 },
-    { name: "Frank", points: 92 },
-    { name: "Grace", points: 67 },
-  ],
-  medium: [
-    { name: "Hannah", points: 95 },
-    { name: "Isaac", points: 82 },
-    { name: "Julia", points: 88 },
-    { name: "Karl", points: 75 },
-    { name: "Lily", points: 79 },
-    { name: "Michael", points: 83 },
-    { name: "Nora", points: 91 },
-  ],
-  hard: [
-    { name: "Oliver", points: 100 },
-    { name: "Penelope", points: 98 },
-    { name: "Quincy", points: 97 },
-    { name: "Rachel", points: 96 },
-    { name: "Samuel", points: 94 },
-    { name: "Tina", points: 93 },
-    { name: "Ulysses", points: 92 },
-  ],
-  pro: [
-    { name: "Victoria", points: 99 },
-    { name: "Winston", points: 100 },
-    { name: "Xander", points: 98 },
-    { name: "Yvonne", points: 97 },
-    { name: "Zara", points: 96 },
-    { name: "Aaron", points: 95 },
-    { name: "Bella", points: 94 },
-  ],
-};
-
 export const difficulties = {
   easy: {
     title: "easy",
@@ -70,6 +31,8 @@ export const difficulties = {
 
 export const displayedTiles = [];
 
+export let currentScore = 0;
+
 export function updateDisplayedTiles(tileId) {
   const foundTile = displayedTiles.find((rec) => rec.id === tileId);
   !foundTile
@@ -78,9 +41,6 @@ export function updateDisplayedTiles(tileId) {
         timesShown: 1,
       })
     : foundTile.timesShown++;
-
-//   console.log(displayedTiles);
-//   //   console.log(foundTile);
 }
 export function drawTiles({ pairs, differentTiles }) {
   const randomPairs = [];
@@ -93,4 +53,17 @@ export function drawTiles({ pairs, differentTiles }) {
     .flatMap((tile) => Array.from({ length: pairsRelation }, () => tile))
     .sort((a, b) => Math.random() - 0.5);
   return tiles;
+}
+
+export function updateScores(id) {
+  updateDisplayedTiles(id);
+  const [{ timesShown }] = displayedTiles.filter((tiles) => tiles.id === id);
+  // updating scores
+  timesShown < 6
+    ? (currentScore += 25 - (timesShown - 2) * 5)
+    : (currentScore += 5);
+  // clearing cache  
+  displayedTiles.forEach((tile) => {
+    if (tile.id === id) tile.timesShown = 0;
+  });
 }
