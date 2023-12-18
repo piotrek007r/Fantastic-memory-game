@@ -1,5 +1,5 @@
 import { updateScores } from "./model.js";
-import { currentScore } from "./model.js";
+import { state } from "./model.js";
 import { updateScoresView } from "./gameBarView.js";
 
 let reversedTiles = [];
@@ -11,6 +11,7 @@ export function tileShow(clickedEl) {
   const tileData = clickedTile.getAttribute("data-tab");
   // guard close
   if (
+    !tileReverse ||
     tileReverse.classList.contains("matched") ||
     clickedTile.classList.contains("tile--back") ||
     isProcessing
@@ -44,10 +45,10 @@ function matchedPair(id) {
     setTimeout(() => {
       isProcessing = false;
       tile.clickedTile.closest(".tile").classList.add("matched");
-    }, 1200)
+    }, 500)
   );
   updateScores(id);
-  updateScoresView(currentScore);
+  updateScoresView(state.currentScore);
   reversedTiles = [];
 }
 

@@ -29,8 +29,10 @@ menuContainer.addEventListener("click", (e) => {
 });
 
 // Game play
-boardContainer.addEventListener("click", (e) => {
-  // show a tile and record its ID
-  model.updateDisplayedTiles(tileShow(e));
-  
-});
+export const boardClickHandler = boardContainer.addEventListener(
+  "click",
+  (e) => {
+    // show a tile and record its ID
+    model.updateDisplayedTiles(tileShow(e));
+  }
+);

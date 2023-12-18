@@ -1,4 +1,5 @@
 import { startGameModal } from "./modalsView.js";
+import { updateTimerView, updateScoresView } from "./gameBarView.js";
 
 const mainBoard = document.querySelector(".board-area");
 let newBoard;
@@ -47,5 +48,7 @@ export function createBoard(boardTiles, currentLevel) {
   currentLevel.title === "pro"
     ? gameBarNode.classList.add("display--pro")
     : gameBarNode.classList.remove("display--pro");
-  // startGameModal(currentLevel);
+  startGameModal(currentLevel);
+  updateScoresView(0);
+  updateTimerView(0);
 }

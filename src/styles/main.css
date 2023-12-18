@@ -50,6 +50,7 @@
   z-index: 10;
 }
 .modal .modal__box--start-game,
+.modal .modal__box--end-game,
 .modal .modal__box--high-score,
 .modal .modal__box--how-to-play {
   position: absolute;
@@ -82,6 +83,29 @@
   text-align: center;
   text-transform: uppercase;
   margin-top: 0.5rem;
+}
+.modal .modal__box--end-game {
+  width: 20rem;
+  height: 8rem;
+  transform: translate(-50%, -50%);
+}
+.modal .modal__box--end-game .modal__title {
+  text-align: center;
+  margin-bottom: 0.2rem;
+  text-transform: uppercase;
+}
+.modal .modal__box--end-game .modal__description {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+.modal .modal__box--end-game .modal__description :first-child {
+  text-align: center;
+}
+.modal .modal__box--end-game .modal__description :last-child {
+  font-weight: 700;
+  font-size: 28px;
 }
 .modal .modal__box--high-score {
   width: 28rem;

@@ -3,4 +3,7 @@ export function updateScoresView(points) {
   scores.textContent = points;
 }
 
-export function updateTimer() {}
+export function updateTimerView(time) {
+  const timer = document.querySelector(".display__timer p");
+  timer.textContent = time;
+}

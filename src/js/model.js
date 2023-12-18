@@ -1,3 +1,7 @@
+import { updateTimerView } from "./gameBarView.js";
+import { gameSummaryModal } from "./modalsView.js";
+import { boardClickHandler } from "./main.js";
+
 export const difficulties = {
   easy: {
     title: "easy",
@@ -29,19 +33,24 @@ export const difficulties = {
   },
 };
 
-export const displayedTiles = [];
-
-export let currentScore = 0;
+export const state = {
+  displayedTiles: [],
+  currentScore: 0,
+  targetPairs: 0,
+  timerFunc: undefined,
+  timeLeft: 0,
+};
 
 export function updateDisplayedTiles(tileId) {
-  const foundTile = displayedTiles.find((rec) => rec.id === tileId);
+  const foundTile = state.displayedTiles.find((rec) => rec.id === tileId);
   !foundTile
-    ? displayedTiles.push({
+    ? state.displayedTiles.push({
         id: tileId,
         timesShown: 1,
       })
     : foundTile.timesShown++;
 }
+
 export function drawTiles({ pairs, differentTiles }) {
   const randomPairs = [];
   while (randomPairs.length < differentTiles) {
@@ -52,18 +61,47 @@ export function drawTiles({ pairs, differentTiles }) {
   const tiles = randomPairs
     .flatMap((tile) => Array.from({ length: pairsRelation }, () => tile))
     .sort((a, b) => Math.random() - 0.5);
+  state.targetPairs = pairs;
   return tiles;
 }
 
 export function updateScores(id) {
   updateDisplayedTiles(id);
-  const [{ timesShown }] = displayedTiles.filter((tiles) => tiles.id === id);
+  const [{ timesShown }] = state.displayedTiles.filter(
+    (tiles) => tiles.id === id
+  );
   // updating scores
   timesShown < 6
-    ? (currentScore += 25 - (timesShown - 2) * 5)
-    : (currentScore += 5);
-  // clearing cache  
-  displayedTiles.forEach((tile) => {
+    ? (state.currentScore += 25 - (timesShown - 2) * 5)
+    : (state.currentScore += 5);
+  // updatig pairs count and trig game end
+  state.targetPairs--;
+  if (state.targetPairs === 0) gameEnd("win");
+  // clearing cache
+  state.displayedTiles.forEach((tile) => {
     if (tile.id === id) tile.timesShown = 0;
   });
+}
+
+// function calcScores() {}
+
+function gameEnd(result) {
+  clearInterval(state.timerFunc);
+  const finalScoring = state.currentScore + state.timeLeft;
+  setTimeout(() => gameSummaryModal(result, finalScoring), 1200);
+}
+
+export function updateTimer(time) {
+  let counter = time;
+  state.timerFunc = setInterval(() => {
+    const minutes = Math.floor(counter / 60);
+    const seconds = String(counter % 60).padStart(2, 0);
+    state.timeLeft = counter;
+    counter--;
+    const formatedTime = `${minutes}:${seconds}`;
+    updateTimerView(formatedTime);
+    if (minutes == 0 && seconds == 0) {
+      gameEnd("lost");
+    }
+  }, 1000);
 }
