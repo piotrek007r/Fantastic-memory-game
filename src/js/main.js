@@ -8,11 +8,22 @@ import { howToPlay } from "./modalsView.js";
 
 const menuContainer = document.querySelector(".main-menu");
 const boardContainer = document.querySelector(".board-area");
-const menuBtn = document.querySelectorAll(".menu__button");
+const mobileBtn = document.querySelector(".menu-view__button");
+const mobileBackdrop = document.querySelector(".backdrop-mobile");
+let isClickable = true;
+
+function hideMobileMenu() {
+  menuContainer.classList.remove("mobile-view");
+  mobileBackdrop.classList.add("hidden");
+}
 
 export function controlNewGame(dataSet) {
+  hideMobileMenu();
+  boardContainer.addEventListener("click", handleBoardClick);
+  isClickable = true;
   const difficulty = model.difficulties[dataSet.getAttribute("data-tab")];
   createBoard(model.drawTiles(difficulty), difficulty);
+  model.state.currentLevel = difficulty.title;
 }
 
 // Main menu
@@ -20,19 +31,26 @@ menuContainer.addEventListener("click", (e) => {
   const clikedBtn = e.target.classList;
 
   clikedBtn.contains("new-game") && subMenu();
-
   clikedBtn.contains("menu__sub-button") && controlNewGame(e.target);
-
   clikedBtn.contains("high-score") && highScoreModal();
-
   clikedBtn.contains("how-to-play") && howToPlay();
 });
 
 // Game play
-export const boardClickHandler = boardContainer.addEventListener(
-  "click",
-  (e) => {
-    // show a tile and record its ID
-    model.updateDisplayedTiles(tileShow(e));
-  }
-);
+function handleBoardClick(e) {
+  model.updateDisplayedTiles(tileShow(e));
+}
+
+export function handleRemoveEvent() {
+  isClickable = false;
+  boardContainer.removeEventListener("click", handleBoardClick);
+}
+
+boardContainer.addEventListener("click", handleBoardClick);
+
+// Mobile menu view
+
+mobileBtn.addEventListener("click", () => {
+  menuContainer.classList.toggle("mobile-view");
+  mobileBackdrop.classList.toggle("hidden");
+});

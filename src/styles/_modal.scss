@@ -24,7 +24,7 @@
     border: 2px solid $color-font-1;
     font-family: "poppins", sans-serif;
     color: $color-font-1;
-    background-color: $color-backgroun-modal;
+    background-color: $color-backgroun-modal-1;
     backdrop-filter: blur(4.5px);
   }
   // -----------< START GAME MODAL >-----------
@@ -75,6 +75,22 @@
         font-weight: 700;
         font-size: 28px;
       }
+    }
+    .modal__input {
+      display: block;
+      background-color: $color-backgroun-modal-2;
+      width: 80%;
+      height: 2rem;
+      margin: auto;
+      text-indent: 1rem;
+      color: $color-font-1;
+      outline: none;
+      border: 2px solid $color-font-1;
+      font-family: "poppins", sans-serif;
+      margin-top: 0.2rem;
+    }
+    ::placeholder {
+      color: $color-font-1;
     }
   }
 

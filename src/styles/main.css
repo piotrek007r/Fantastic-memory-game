@@ -7,25 +7,80 @@
   align-items: center;
   flex-direction: column;
 }
+@media (max-width: 40rem) {
+  .board-area {
+    transform: translateY(-3rem);
+  }
+}
 
 .board-easy {
   width: 28rem;
   height: 21rem;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+@media (max-width: 40rem) {
+  .board-easy {
+    width: 21rem;
+    height: 28rem;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+  }
 }
 
 .board-medium {
   width: 28rem;
   height: 28rem;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+@media (max-width: 40rem) {
+  .board-medium {
+    width: 22rem;
+    height: 22rem;
+  }
 }
 
 .board-hard {
   width: 35rem;
   height: 28rem;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+@media (max-width: 40rem) {
+  .board-hard {
+    width: 22rem;
+    height: 29rem;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+  }
 }
 
 .board-pro {
-  width: 56rem;
-  height: 42rem;
+  width: 54rem;
+  height: 40rem;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+}
+@media (max-width: 67rem) {
+  .board-pro {
+    width: 50rem;
+    height: 36rem;
+  }
+}
+@media (max-width: 63rem) {
+  .board-pro {
+    width: 46rem;
+    height: 32rem;
+  }
+}
+@media (max-width: 40rem) {
+  .board-pro {
+    height: 36rem;
+    width: 22rem;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+  }
 }
 
 .board-easy,
@@ -33,7 +88,6 @@
 .board-hard,
 .board-pro {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
 }
 
 .modal {
@@ -107,6 +161,22 @@
   font-weight: 700;
   font-size: 28px;
 }
+.modal .modal__box--end-game .modal__input {
+  display: block;
+  background-color: hsla(175, 80%, 10%, 0.3);
+  width: 80%;
+  height: 2rem;
+  margin: auto;
+  text-indent: 1rem;
+  color: white;
+  outline: none;
+  border: 2px solid white;
+  font-family: "poppins", sans-serif;
+  margin-top: 0.2rem;
+}
+.modal .modal__box--end-game ::placeholder {
+  color: white;
+}
 .modal .modal__box--high-score {
   width: 28rem;
   height: 32rem;
@@ -153,6 +223,42 @@
   flex-direction: column;
   gap: 1rem;
 }
+@media (max-width: 40rem) {
+  .main-menu {
+    position: absolute;
+    right: -100%;
+    top: 10%;
+    transition: all 0.5s ease-out;
+  }
+}
+
+.menu-view__button {
+  display: none;
+  z-index: 20;
+}
+@media (max-width: 40rem) {
+  .menu-view__button {
+    display: block;
+    width: 100%;
+    height: 2.5rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: inherit;
+    border-bottom: 2px solid white;
+    color: white;
+    font-family: "poppins", sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    line-height: 2.2;
+  }
+}
+
+.mobile-view {
+  right: 0;
+  z-index: 20;
+}
 
 .menu__button,
 .high-score__difficulty--button {
@@ -194,8 +300,7 @@
 }
 
 .tile__container {
-  width: 7rem;
-  height: 7rem;
+  width: 100%;
   position: relative;
   perspective: 300px;
 }
@@ -238,6 +343,11 @@
   display: flex;
   flex-direction: row;
 }
+@media (max-width: 40rem) {
+  .game-bar__display {
+    scale: 0.8;
+  }
+}
 
 .display {
   width: 12rem;
@@ -248,6 +358,11 @@
   letter-spacing: 0.5px;
   text-align: center;
   transform: translateY(-3rem);
+}
+@media (max-width: 40rem) {
+  .display {
+    width: 10rem;
+  }
 }
 .display h4 {
   font-weight: 700;
@@ -274,19 +389,24 @@
 
 body {
   background: linear-gradient(to right, #38ef7d, #11998e);
+  overflow: hidden;
+  position: relative;
 }
 body main {
   display: flex;
   backdrop-filter: blur(10px);
 }
 
-img {
-  width: 50px;
-  height: 50px;
+.backdrop-mobile {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backdrop-filter: blur(10px);
+  z-index: 10;
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 /*# sourceMappingURL=main.css.map */

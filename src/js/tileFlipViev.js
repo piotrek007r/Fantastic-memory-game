@@ -17,6 +17,7 @@ export function tileShow(clickedEl) {
     isProcessing
   )
     return;
+  // poirs compare  
   if (reversedTiles.length < 2) {
     reverseClickedTile(clickedTile, tileReverse, tileData);
     if (

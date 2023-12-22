@@ -9,8 +9,11 @@ $color-grad-2: #11998e;
 $color-font-1: white;
 $color-font-2: rgba(255, 255, 255, 0.76);
 
+$media-mobile: 40rem;
+
 $button-highlight: #42dacd;
 
-$color-backgroun-modal: hsla(175, 80%, 10%, 0.5);
+$color-backgroun-modal-1: hsla(175, 80%, 10%, 0.5);
+$color-backgroun-modal-2: hsla(175, 80%, 10%, 0.3);
 
 $gradient: linear-gradient(to right, $color-grad-1, $color-grad-2);

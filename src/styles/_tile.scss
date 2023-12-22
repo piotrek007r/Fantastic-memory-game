@@ -1,6 +1,5 @@
 .tile__container {
-  width: 7rem;
-  height: 7rem;
+  width: 100%;
   position: relative;
   perspective: 300px;
 
@@ -14,6 +13,10 @@
     background-size: 70%;
     background-repeat: no-repeat;
     background-position: center;
+
+    // @media (max-width: $media-mobile) {
+    //   background-size: 90%;
+    // }
   }
 
   .tile {

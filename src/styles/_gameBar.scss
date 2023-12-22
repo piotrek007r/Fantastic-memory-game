@@ -1,6 +1,10 @@
 .game-bar__display {
   display: flex;
   flex-direction: row;
+
+  @media (max-width: $media-mobile) {
+    scale: 0.8;
+  }
 }
 
 .display {
@@ -12,6 +16,10 @@
   letter-spacing: 0.5px;
   text-align: center;
   transform: translateY(-3rem);
+
+  @media (max-width: $media-mobile) {
+    width: 10rem;
+  }
 
   h4 {
     font-weight: 700;

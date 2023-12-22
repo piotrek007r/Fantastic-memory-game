@@ -1,5 +1,4 @@
-import { scoreLists } from "./SCORE_LIST.js";
-import { updateTimer } from "./model.js";
+import * as model from "./model.js";
 
 const body = document.querySelector("main");
 let activeModal = "";
@@ -7,19 +6,19 @@ let handleTime = 0;
 
 // ----------< HELPER FUNCTIONS >---------------
 
-function clickHandler(e) {
+function submitHandler(e) {
   const targetBtn = e.target.getAttribute("data-tab");
   const modalStart = e.target.closest(".modal__box--start-game");
   // Confirm to start a game
   if (targetBtn === "close-modal" && modalStart) {
-    updateTimer(handleTime);
+    model.updateTimer(handleTime);
     closeModal();
     // close other madals
   } else if (targetBtn === "close-modal") {
     closeModal();
     // toggling difficultie bars
   } else if (targetBtn) {
-    const sortedList = scoreLists[targetBtn].sort(
+    const sortedList = model.state.scoreTables[targetBtn].sort(
       (a, b) => b.points - a.points
     );
     closeModal();
@@ -57,7 +56,7 @@ export function startGameModal(difficulty) {
 
   activeModal = document.querySelector(".modal");
 
-  activeModal.addEventListener("click", clickHandler);
+  activeModal.addEventListener("click", submitHandler);
   handleTime = difficulty.gameTime;
 }
 
@@ -82,7 +81,7 @@ function generateScoreList(scores) {
 }
 
 export function highScoreModal(
-  scoreList = scoreLists.easy,
+  scoreList = model.state.scoreTables.easy,
   handleBtn = "easy"
 ) {
   const modalHighScore = `
@@ -117,7 +116,7 @@ export function highScoreModal(
   const activeBtn = activeModal.querySelector(`.${handleBtn}`);
   activeBtn.classList.add("highlighted");
 
-  activeModal.addEventListener("click", clickHandler);
+  activeModal.addEventListener("click", submitHandler);
 }
 
 //----------< HOW TO PLAY MODAL >---------------
@@ -135,24 +134,40 @@ export function howToPlay() {
   </div>`;
   body.insertAdjacentHTML("afterbegin", modalHowToPlay);
   activeModal = document.querySelector(".modal");
-  activeModal.addEventListener("click", clickHandler);
+  activeModal.addEventListener("click", submitHandler);
 }
 
 //----------< END GAME MODAL >---------------
 
-export function gameSummaryModal(result, scores) {
+export function gameSummaryModal(result = "win", scores) {
+  const isLost = result === "lost";
   const modalSummary = ` 
   <div class="modal">
   <div class="backdrop"></div>
-  <div class="modal__box--end-game">
-    <h2 class="modal__title">You ${result}</h2>
-    <div class="modal__description"><p> Score:</p> <p>${scores}</p></div>
-    <button class="modal__submit" data-tab="close-modal">OK</button>
-  </div>
-</div>
-  `;
+  <form class="modal__box--end-game" style="${!isLost ? "height: 11rem" : ""}">
+  <h2 class="modal__title">You ${result}</h2>
+  <div class="modal__description"><p>${
+    isLost ? "Time's up" : "Score:"
+  } </p> <p class="${isLost ? "hidden" : ""}">${scores}</p></div>
+  <input class="modal__input ${
+    isLost ? "hidden" : ""
+  }" placeholder="Enter your name"/>
+    <button type='submit' class="modal__submit" data-tab="close-modal" >OK</button>
+    </form>
+    </div>
+    `;
+
+  function fomrHandler(event) {
+    event.preventDefault();
+    const playerName = activeModal.querySelector("input").value;
+    model.gameEndSubmision(playerName);
+    closeModal();
+  }
 
   body.insertAdjacentHTML("afterbegin", modalSummary);
   activeModal = document.querySelector(".modal");
-  activeModal.addEventListener("click", clickHandler);
+  activeModal.querySelector("form").addEventListener("submit", fomrHandler);
+  // activeModal.addEventListener("click", submitHandler);
 }
+
+// gameSummaryModal("win", 24);

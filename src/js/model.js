@@ -1,19 +1,20 @@
 import { updateTimerView } from "./gameBarView.js";
 import { gameSummaryModal } from "./modalsView.js";
-import { boardClickHandler } from "./main.js";
+import { handleRemoveEvent } from "./main.js";
+import { dummyScores } from "./SCORE_LIST.js";
 
 export const difficulties = {
   easy: {
     title: "easy",
     tilesNum: 12,
-    gameTime: 60,
+    gameTime: 40,
     pairs: 6,
     differentTiles: 3,
   },
   medium: {
     title: "medium",
     tilesNum: 16,
-    gameTime: 160,
+    gameTime: 60,
     pairs: 8,
     differentTiles: 8,
   },
@@ -27,18 +28,20 @@ export const difficulties = {
   pro: {
     title: "pro",
     tilesNum: 48,
-    gameTime: 180,
+    gameTime: 170,
     pairs: 24,
     differentTiles: 24,
   },
 };
 
-export const state = {
+export let state = {
   displayedTiles: [],
   currentScore: 0,
   targetPairs: 0,
   timerFunc: undefined,
   timeLeft: 0,
+  currentLevel: "easy",
+  scoreTables: {},
 };
 
 export function updateDisplayedTiles(tileId) {
@@ -83,14 +86,6 @@ export function updateScores(id) {
   });
 }
 
-// function calcScores() {}
-
-function gameEnd(result) {
-  clearInterval(state.timerFunc);
-  const finalScoring = state.currentScore + state.timeLeft;
-  setTimeout(() => gameSummaryModal(result, finalScoring), 1200);
-}
-
 export function updateTimer(time) {
   let counter = time;
   state.timerFunc = setInterval(() => {
@@ -105,3 +100,40 @@ export function updateTimer(time) {
     }
   }, 1000);
 }
+
+function updateHighScore(playerName) {
+  state.scoreTables[state.currentLevel].push({
+    name: playerName,
+    points: state.currentScore,
+  });
+  console.log(state.scoreTables);
+}
+
+function gameEnd(result) {
+  clearInterval(state.timerFunc);
+  const finalScoring = state.currentScore + state.timeLeft;
+  setTimeout(() => gameSummaryModal(result, finalScoring), 1200);
+  handleRemoveEvent();
+}
+
+export function gameEndSubmision(playerName) {
+  updateHighScore(playerName);
+  state = {
+    ...state,
+    displayedTiles: [],
+    currentScore: 0,
+    targetPairs: 0,
+    timerFunc: undefined,
+    timeLeft: 0,
+    currentLevel: "",
+  };
+}
+
+function init() {
+  const storage = localStorage.getItem("scoreTables");
+  storage
+    ? (state.scoreTables = JSON.parse(storage))
+    : (state.scoreTables = dummyScores);
+}
+
+init();
