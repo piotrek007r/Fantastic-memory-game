@@ -16,6 +16,9 @@ body {
   overflow: hidden;
   position: relative;
 
+  // @media (max-width: $media-mobile) {
+  //   padding-top: 2.5rem;
+  // }
   main {
     display: flex;
     backdrop-filter: blur(10px);

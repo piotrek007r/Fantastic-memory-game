@@ -6,9 +6,9 @@
   align-items: center;
   flex-direction: column;
 
-  @media (max-width: $media-mobile) {
-    transform: translateY(-3rem);
-  }
+  // @media (max-width: $media-mobile) {
+  //   transform: translateY(-3rem);
+  // }
 }
 .board-easy {
   width: 28rem;
