@@ -35,6 +35,8 @@ body {
   height: 100%;
   position: absolute;
   // background: $gradient;
+  -webkit-backdrop-filter: blur(10px);
+  -moz-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 
   z-index: 10;
