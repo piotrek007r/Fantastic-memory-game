@@ -19,7 +19,6 @@ function hideMobileMenu() {
 }
 
 export function controlNewGame(dataSet) {
-  console.log("new game");
   model.resetState();
   hideMobileMenu();
   boardContainer.addEventListener("click", handleBoardClick);
@@ -55,17 +54,13 @@ boardContainer.addEventListener("click", handleBoardClick);
 // Mobile menu view
 
 mobileBtn.addEventListener("click", () => {
-  console.log("toggle");
-
   if (model.state.timeLeft > 0) {
     if (isPaused) {
       model.updateTimer(model.state.timeLeft);
-      console.log("restarted at:", model.state.timeLeft);
       isPaused = false;
     } else {
       // model.state.timeOnPouse = model.state.timeLeft;
       clearInterval(model.state.timerFunc);
-      console.log("pused at:", model.state.timeLeft);
       isPaused = true;
     }
   }

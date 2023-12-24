@@ -37,6 +37,7 @@ export const difficulties = {
 export let state = {
   displayedTiles: [],
   currentScore: 0,
+  finalScoring: 0,
   targetPairs: 0,
   timerFunc: undefined,
   timeLeft: 0,
@@ -105,15 +106,16 @@ export function updateTimer(time) {
 function updateHighScore(playerName) {
   state.scoreTables[state.currentLevel].push({
     name: playerName,
-    points: state.currentScore,
+    points: state.finalScoring,
   });
   console.log(state.scoreTables);
 }
 
 function gameEnd(result) {
   clearInterval(state.timerFunc);
-  const finalScoring = state.currentScore + state.timeLeft;
-  setTimeout(() => gameSummaryModal(result, finalScoring), 1200);
+  state.finalScoring = state.currentScore + state.timeLeft;
+  console.log(state.finalScoring);
+  setTimeout(() => gameSummaryModal(result, state.finalScoring), 1200);
   handleRemoveEvent();
 }
 
@@ -144,3 +146,6 @@ function init() {
 }
 
 init();
+const test = state.scoreTables.easy[0].points;
+console.log(test);
+console.log(test);

@@ -40,14 +40,10 @@ export function startGameModal(difficulty) {
       <div class="modal__box--start-game">
         <h2 class="modal__title">Level <span>${difficulty.title}</span></h2>
         <p class="modal__description">
-          You have ${difficulty.gameTime} seconds to match ${
-    difficulty.pairs
-  } pairs.
-          If you win, you recive a bonus points. There are ${
-            difficulty.differentTiles
-          } different types of tiles. 
+          You have ${difficulty.gameTime} seconds to match ${difficulty.pairs} pairs.
+          If you win, you recive a bonus points. There are ${difficulty.differentTiles} different types of tiles. 
         </p>
-        <h3 class="modal__high-score" >Top Score: <span>${"80"}</span></h3>
+        <h3 class="modal__high-score" >Top Score: <span>${model.state.scoreTables.easy[0].points}</span></h3>
         <button class="modal__submit" data-tab="close-modal">OK</button>
         </div>
         </div>
