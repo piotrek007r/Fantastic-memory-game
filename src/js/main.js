@@ -18,6 +18,7 @@ function hideMobileMenu() {
 }
 
 export function controlNewGame(dataSet) {
+  model.resetState()
   hideMobileMenu();
   boardContainer.addEventListener("click", handleBoardClick);
   isClickable = true;
@@ -29,9 +30,9 @@ export function controlNewGame(dataSet) {
 // Main menu
 menuContainer.addEventListener("click", (e) => {
   const clikedBtn = e.target.classList;
-
-  clikedBtn.contains("new-game") && subMenu();
+  
   clikedBtn.contains("menu__sub-button") && controlNewGame(e.target);
+  clikedBtn.contains("new-game") && subMenu();
   clikedBtn.contains("high-score") && highScoreModal();
   clikedBtn.contains("how-to-play") && howToPlay();
 });

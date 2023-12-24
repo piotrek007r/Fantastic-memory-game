@@ -29,8 +29,8 @@
     }
     .tile--back {
       backface-visibility: hidden;
-      background-image: url("/src/assets/tile-2.svg");
       transform: rotateY(180deg);
+      // overflow: auto !important;
       opacity: 1;
       filter: grayscale(0);
     }

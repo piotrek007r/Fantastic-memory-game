@@ -11,17 +11,18 @@
   margin: 0;
 }
 
+*:not(.tile__container):not(.tile__container *) {
+  overflow: hidden !important;
+}
+
 body {
   background: $gradient;
-  overflow: hidden;
   position: relative;
 
-  // @media (max-width: $media-mobile) {
-  //   padding-top: 2.5rem;
-  // }
   main {
     display: flex;
-    backdrop-filter: blur(10px);
+    @media (max-width: $media-mobile) {
+    }
   }
 }
 
@@ -32,9 +33,10 @@ body {
 
 .backdrop-mobile {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   position: absolute;
-  // background: $gradient;
+  -webkit-backdrop-filter: blur(10px);
+  -moz-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 
   z-index: 10;

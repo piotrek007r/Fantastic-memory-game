@@ -7,7 +7,7 @@ export const difficulties = {
   easy: {
     title: "easy",
     tilesNum: 12,
-    gameTime: 40,
+    gameTime: 1,
     pairs: 6,
     differentTiles: 3,
   },
@@ -116,8 +116,8 @@ function gameEnd(result) {
   handleRemoveEvent();
 }
 
-export function gameEndSubmision(playerName) {
-  updateHighScore(playerName);
+export function resetState() {
+  clearInterval(state.timerFunc);
   state = {
     ...state,
     displayedTiles: [],
@@ -127,6 +127,11 @@ export function gameEndSubmision(playerName) {
     timeLeft: 0,
     currentLevel: "",
   };
+}
+
+export function gameEndSubmision(playerName) {
+  updateHighScore(playerName);
+  resetState()
 }
 
 function init() {
