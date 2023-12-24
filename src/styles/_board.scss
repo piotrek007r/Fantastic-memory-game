@@ -67,7 +67,7 @@
   }
 
   @media (max-width: $media-mobile) {
-    height: 36rem;
+    height: 32rem;
     width: 22rem;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(8, 1fr);

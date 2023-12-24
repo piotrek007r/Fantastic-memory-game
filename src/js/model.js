@@ -7,14 +7,14 @@ export const difficulties = {
   easy: {
     title: "easy",
     tilesNum: 12,
-    gameTime: 1,
+    gameTime: 30,
     pairs: 6,
     differentTiles: 3,
   },
   medium: {
     title: "medium",
     tilesNum: 16,
-    gameTime: 60,
+    gameTime: 50,
     pairs: 8,
     differentTiles: 8,
   },
@@ -40,6 +40,7 @@ export let state = {
   targetPairs: 0,
   timerFunc: undefined,
   timeLeft: 0,
+  timeOnPouse: 0,
   currentLevel: "easy",
   scoreTables: {},
 };
@@ -125,13 +126,14 @@ export function resetState() {
     targetPairs: 0,
     timerFunc: undefined,
     timeLeft: 0,
+    timeOnPouse: 0,
     currentLevel: "",
   };
 }
 
 export function gameEndSubmision(playerName) {
   updateHighScore(playerName);
-  resetState()
+  resetState();
 }
 
 function init() {

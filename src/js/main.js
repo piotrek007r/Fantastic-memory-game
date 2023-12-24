@@ -11,6 +11,7 @@ const boardContainer = document.querySelector(".board-area");
 const mobileBtn = document.querySelector(".menu-view__button");
 const mobileBackdrop = document.querySelector(".backdrop-mobile");
 let isClickable = true;
+let isPaused = false;
 
 function hideMobileMenu() {
   menuContainer.classList.remove("mobile-view");
@@ -18,10 +19,12 @@ function hideMobileMenu() {
 }
 
 export function controlNewGame(dataSet) {
-  model.resetState()
+  console.log("new game");
+  model.resetState();
   hideMobileMenu();
   boardContainer.addEventListener("click", handleBoardClick);
   isClickable = true;
+  isPaused = false;
   const difficulty = model.difficulties[dataSet.getAttribute("data-tab")];
   createBoard(model.drawTiles(difficulty), difficulty);
   model.state.currentLevel = difficulty.title;
@@ -30,7 +33,7 @@ export function controlNewGame(dataSet) {
 // Main menu
 menuContainer.addEventListener("click", (e) => {
   const clikedBtn = e.target.classList;
-  
+
   clikedBtn.contains("menu__sub-button") && controlNewGame(e.target);
   clikedBtn.contains("new-game") && subMenu();
   clikedBtn.contains("high-score") && highScoreModal();
@@ -52,6 +55,21 @@ boardContainer.addEventListener("click", handleBoardClick);
 // Mobile menu view
 
 mobileBtn.addEventListener("click", () => {
+  console.log("toggle");
+
+  if (model.state.timeLeft > 0) {
+    if (isPaused) {
+      model.updateTimer(model.state.timeLeft);
+      console.log("restarted at:", model.state.timeLeft);
+      isPaused = false;
+    } else {
+      // model.state.timeOnPouse = model.state.timeLeft;
+      clearInterval(model.state.timerFunc);
+      console.log("pused at:", model.state.timeLeft);
+      isPaused = true;
+    }
+  }
+
   menuContainer.classList.toggle("mobile-view");
   mobileBackdrop.classList.toggle("hidden");
 });
