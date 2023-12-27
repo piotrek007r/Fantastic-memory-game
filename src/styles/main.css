@@ -14,7 +14,7 @@
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);
 }
-@media (max-width: 40rem) {
+@media (max-width: 45rem) {
   .board-easy {
     width: 21rem;
     height: 28rem;
@@ -29,7 +29,7 @@
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
 }
-@media (max-width: 40rem) {
+@media (max-width: 45rem) {
   .board-medium {
     width: 22rem;
     height: 22rem;
@@ -42,7 +42,7 @@
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(4, 1fr);
 }
-@media (max-width: 40rem) {
+@media (max-width: 45rem) {
   .board-hard {
     width: 22rem;
     height: 29rem;
@@ -69,7 +69,19 @@
     height: 32rem;
   }
 }
-@media (max-width: 40rem) {
+@media (max-width: 59rem) {
+  .board-pro {
+    width: 42rem;
+    height: 28rem;
+  }
+}
+@media (max-width: 55rem) {
+  .board-pro {
+    width: 32rem;
+    height: 22rem;
+  }
+}
+@media (max-width: 45rem) {
   .board-pro {
     height: 32rem;
     width: 22rem;
@@ -95,9 +107,9 @@
   height: 100vh;
   position: absolute;
   background-color: rgba(255, 255, 255, 0.3);
-  -webkit-backdrop-filter: blur(2.5px);
-  -moz-backdrop-filter: blur(2.5px);
-  backdrop-filter: blur(2.5px);
+  -webkit-backdrop-filter: blur(3.5px);
+  -moz-backdrop-filter: blur(3.5px);
+  backdrop-filter: blur(3.5px);
   z-index: 10;
 }
 .modal .modal__box--start-game,
@@ -120,7 +132,7 @@
   height: 12rem;
   transform: translate(-50%, -75%);
 }
-@media (max-width: 40rem) {
+@media (max-width: 45rem) {
   .modal .modal__box--start-game {
     width: 100%;
     height: 12.5rem;
@@ -187,7 +199,7 @@
   transform: translate(-50%, -50%);
   transition: all 0.5s ease-out;
 }
-@media (max-width: 40rem) {
+@media (max-width: 45rem) {
   .modal .modal__box--high-score {
     width: 100%;
     top: 0;
@@ -223,7 +235,7 @@
   height: 25rem;
   transform: translate(-50%, -50%);
 }
-@media (max-width: 40rem) {
+@media (max-width: 45rem) {
   .modal .modal__box--how-to-play {
     width: 100%;
   }
@@ -242,7 +254,12 @@
   gap: 1rem;
   overflow-x: hidden;
 }
-@media (max-width: 40rem) {
+@media (max-width: 63rem) {
+  .main-menu {
+    width: 15rem;
+  }
+}
+@media (max-width: 45rem) {
   .main-menu {
     position: absolute;
     right: -100%;
@@ -255,7 +272,7 @@
   display: none;
   z-index: 20;
 }
-@media (max-width: 40rem) {
+@media (max-width: 45rem) {
   .menu-view__button {
     display: block;
     width: 100%;
@@ -363,7 +380,7 @@
   flex-direction: row;
   transform: translateY(-2rem);
 }
-@media (max-width: 40rem) {
+@media (max-width: 45rem) {
   .game-bar__display {
     scale: 0.8;
     transform: translateY(0);
@@ -379,7 +396,7 @@
   letter-spacing: 0.5px;
   text-align: center;
 }
-@media (max-width: 40rem) {
+@media (max-width: 45rem) {
   .display {
     width: 10rem;
   }
@@ -399,7 +416,7 @@
 }
 
 .display--pro {
-  transform: translateY(1rem);
+  transform: translateY(0rem);
   margin-top: 0.5rem;
 }
 

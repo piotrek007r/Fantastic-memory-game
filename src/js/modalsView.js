@@ -45,7 +45,7 @@ export function startGameModal(difficulty) {
           } different types of tiles. 
         </p>
         <h3 class="modal__high-score" >Top Score: <span>${
-          model.state.scoreTables[difficulty.title].points
+          model.state.scoreTables[difficulty.title][0].points
         }</span></h3>
         <button class="modal__submit" data-tab="close-modal">OK</button>
         </div>
