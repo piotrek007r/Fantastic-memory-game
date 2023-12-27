@@ -5,10 +5,6 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
-  // @media (max-width: $media-mobile) {
-  //   transform: translateY(-3rem);
-  // }
 }
 .board-easy {
   width: 28rem;
@@ -78,8 +74,5 @@
 .board-medium,
 .board-hard,
 .board-pro {
-  // background-color: aliceblue;
   display: grid;
-  // grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
-  // gap: 1rem;
 }

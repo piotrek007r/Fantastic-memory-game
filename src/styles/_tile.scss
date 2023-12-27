@@ -13,10 +13,6 @@
     background-size: 70%;
     background-repeat: no-repeat;
     background-position: center;
-
-    // @media (max-width: $media-mobile) {
-    //   background-size: 90%;
-    // }
   }
 
   .tile {
@@ -30,7 +26,6 @@
     .tile--back {
       backface-visibility: hidden;
       transform: rotateY(180deg);
-      // overflow: auto !important;
       opacity: 1;
       filter: grayscale(0);
     }

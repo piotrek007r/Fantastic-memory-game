@@ -108,13 +108,12 @@ function updateHighScore(playerName) {
     name: playerName,
     points: state.finalScoring,
   });
-  console.log(state.scoreTables);
+  localStorage.setItem("scoreTables", JSON.stringify(state.scoreTables));
 }
 
 function gameEnd(result) {
   clearInterval(state.timerFunc);
   state.finalScoring = state.currentScore + state.timeLeft;
-  console.log(state.finalScoring);
   setTimeout(() => gameSummaryModal(result, state.finalScoring), 1200);
   handleRemoveEvent();
 }
@@ -146,6 +145,3 @@ function init() {
 }
 
 init();
-const test = state.scoreTables.easy[0].points;
-console.log(test);
-console.log(test);
