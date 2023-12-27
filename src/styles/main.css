@@ -261,6 +261,7 @@
 }
 @media (max-width: 45rem) {
   .main-menu {
+    width: 19rem;
     position: absolute;
     right: -100%;
     top: 10%;
