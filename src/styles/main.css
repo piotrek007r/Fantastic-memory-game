@@ -355,6 +355,7 @@
 }
 .tile__container .tile {
   transform-style: preserve-3d;
+  transition: all 0.8s;
 }
 .tile__container .tile .tile--front {
   backface-visibility: hidden;
