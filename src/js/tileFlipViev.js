@@ -10,6 +10,7 @@ export function tileShow(clickedEl) {
   const tileReverse = clickedTile.closest(".tile");
   const tileData = clickedTile.getAttribute("data-tab");
   // guard close
+  console.log("spam try");
   if (
     !tileReverse ||
     tileReverse.classList.contains("matched") ||
@@ -17,7 +18,9 @@ export function tileShow(clickedEl) {
     isProcessing
   )
     return;
-  // poirs compare  
+  console.log("spam succes");
+
+  // poirs compare
   if (reversedTiles.length < 2) {
     reverseClickedTile(clickedTile, tileReverse, tileData);
     if (
